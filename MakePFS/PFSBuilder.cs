@@ -184,8 +184,14 @@ namespace MakePFS
     /// </summary>
     void SetupRootStructure()
     {
-      inodes.Add(super_root_ino = new PfsDinode32 { Mode = InodeMode.dir | InodeMode.rx_only, Blocks = 1, Size = 65536, SizeCompressed = 65536, Nlink = 1, Number = 0 });
-      inodes.Add(fpt_ino = new PfsDinode32 { Mode = InodeMode.file | InodeMode.rwx, Blocks = 1, Number = 1 });
+      inodes.Add(super_root_ino = new PfsDinode32
+      {
+        Mode = InodeMode.dir | InodeMode.rx_only | InodeMode.super, Blocks = 1, Size = 65536, SizeCompressed = 65536, Nlink = 1, Number = 0
+      });
+      inodes.Add(fpt_ino = new PfsDinode32
+      {
+        Mode = InodeMode.file | InodeMode.rwx | InodeMode.super, Blocks = 1, Number = 1
+      });
       var uroot_ino = new PfsDinode32 { Mode = InodeMode.dir | InodeMode.rwx, Number = 2, Size = 65536, SizeCompressed = 65536, Blocks = 1 };
 
       super_root_dirents = new List<PfsDirent>
