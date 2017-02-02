@@ -91,7 +91,6 @@ namespace MakePFS
     u_read = 64,
     u_write = 128,
     u_execute = 256,
-    super = 8192,
     dir = 16384,
     file = 32768,
     rx_only = 0x16D,
